@@ -9,7 +9,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f0f0f0;
+    background-image: url('https://img.freepik.com/premium-vector/african-woman-traditional-ethnic-vector-elements-collection_490886-247.jpg');
   }
   
   #chat-container {
@@ -17,7 +17,8 @@
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    width: 400px;
+    width: 1000px;
+    
   }
   
   h1 {
@@ -39,9 +40,10 @@
   }
   
   .bot-message {
+    color:white;
     text-align: left;
     padding: 10px;
-    background-color: #e0f0e0;
+    background-color: #313131;
     border-radius: 10px;
     margin-bottom: 5px;
   }
@@ -59,7 +61,7 @@
   }
   
   button {
-    background-color: #4CAF50;
+    background-color: #4d4e4d;
     color: white;
     border: none;
     padding: 10px 15px;
@@ -73,10 +75,14 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-  </style>
+ </style>
 </head>
-<body>
+<body >
+ <header>
+    
+  </header>
   <div id="chat-container">
+  <h1><a href="/index.html">Home</a></h1>
   <h1>Learn Kenyan Cultures with Heritage Chatbot</h1>
   <div id="chat-history"></div>
   <form id="chat-form">
@@ -97,7 +103,7 @@
       userInput.value = ''; // Clear input field
       console.log(userMessage)
       try {
-        const response = await fetch('/chat', {
+        const response = await fetch('http://localhost:5503/chat', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -4,10 +4,15 @@
 const express = require('express');
 const { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } = require('@google/generative-ai');
 const dotenv = require('dotenv').config()
-
+const path = require('path');
+const cors = require('cors');
 const app = express();
-const port = process.env.PORT || 5501;
+const port = process.env.PORT || 5503;
+
+app.use(cors());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
+
 const MODEL_NAME = "gemini-pro";
 const API_KEY = process.env.API_KEY;
 
@@ -75,7 +80,7 @@ async function runChat(userInput) {
 }
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(__dirname, 'public/index.html');
 });
 app.get('/loader.gif', (req, res) => {
   res.sendFile(__dirname + '/loader.gif');
